@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenido a Puma Energy</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Encabezado superior */
+    .header {
+      height: 50px;
+      background: linear-gradient(to right, #2e7d32 0%, #2e7d32 70%, #d32f2f 70%, #d32f2f 100%);
+    }
+
+    /* Logo y texto central */
+    .logo-container {
+      text-align: center;
+      padding: 20px 0 10px 0;
+    }
+
+    .logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .welcome-text {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #000000;
+      text-align: center;
+    }
+
+	.welcome-text2 {
+      font-size: 3em;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #000000;
+      text-align: center;
+    }
+
+    /* Contenido principal */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      position: relative;
+    }
+
+    /* Sección izquierda */
+    .client-section {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .client-section h2 {
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      position: relative;
+      text-align: left;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #2e7d32;
+    }
+
+    .forgot-password {
+      font-size: 0.9em;
+      color: #2e7d32;
+      text-decoration: underline;
+      cursor: pointer;
+      margin: 10px 0;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 6px 12px;
+      margin: 8px 0;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95em;
+      border-radius: 4px;
+      text-align: center;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-green {
+      background-color: #2e7d32;
+      color: white;
+    }
+
+    .btn-green:hover {
+      background-color: #1b5e20;
+    }
+
+    .or {
+      margin: 20px 0;
+      color: #666;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    /* Sección derecha */
+    .employee-section {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .employee-section h2 {
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+      background-image: url('https://prodazureb2ccdn.azureedge.net/b2c-azure-prod-cp/images/earth.svg');
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .employee-section p {
+      margin: 15px 0;
+      color: #666;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(46, 125, 50, 0.1);
+    }
+
+    /* Form empleado (oculto) */
+    .employee-login-form {
+      display: none;
+      max-width: 360px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
+
+    /* Línea divisoria */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100%;
+      background-color: #ccc;
+      z-index: 1;
+    }
+
+    /* Mensajes */
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .success-message {
+      color: #2e7d32;
+      font-size: 0.95em;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .footer a {
+      color: #2e7d32;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <div class="header"></div>
+
+  <!-- Logo y texto -->
+  <div class="logo-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Puma_Energy_logo.svg/2560px-Puma_Energy_logo.svg.png" alt="Puma Energy Logo" class="logo" />
+    <p class="welcome-text">Bienvenido a</p>
+	<h1 class="welcome-text2">PUMA ENERGY</h1>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- CLIENTE / CONTRAPARTE -->
+    <div class="client-section">
+      <h2>Cliente/Contraparte</h2>
+      
+      <form id="loginFormCliente">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="Email Address" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="Password" required />
+        </div>
+
+        <a href="#" class="forgot-password">¿Olvidó su contraseña?</a>
+        
+        <button type="submit" class="btn btn-green">Click here to Login with Password</button>
+        
+        <div class="or">OR</div>
+        <a href="#" class="btn btn-green">Click here to Login with OTP</a>
+      </form>
+
+      <div id="error-cliente" class="error-message" style="display:none;">
+        Credenciales inválidas. Intente de nuevo.
+      </div>
+    </div>
+
+    <!-- PORTAL DE EMPLEADO -->
+    <div class="employee-section">
+      <h2>Portal de Empleado</h2>
+      <div class="icon"></div>
+      <p>Obtener acceso a las aplicaciones empresariales aquí.</p>
+
+      <!-- Botón que despliega el formulario -->
+      <a href="#" id="btnToggleEmpleado" class="btn btn-outline">INICIAR SESIÓN</a>
+
+      <!-- Formulario oculto de empleado -->
+      <form id="loginFormEmpleado" class="employee-login-form">
+        <div class="form-group">
+          <label for="usuarioEmpleado">Usuario</label>
+          <input type="text" id="usuarioEmpleado" class="form-control" placeholder="Usuario" required />
+        </div>
+        <div class="form-group">
+          <label for="claveEmpleado">Contraseña</label>
+          <input type="password" id="claveEmpleado" class="form-control" placeholder="Contraseña" required />
+        </div>
+        <button type="submit" class="btn btn-green">Entrar</button>
+      </form>
+
+      <div id="msg-empleado" class="error-message" style="display:none;"></div>
+      <div id="ok-empleado" class="success-message" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © Derechos de autor Puma Energy 2020. Todos los derechos reservados. 
+    <a href="#">Política de Privacidad</a>
+  </div>
+
+  <!-- Script funcional -->
+  <script>
+    // --- Cliente / Contraparte ---
+    document.getElementById("loginFormCliente").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorCliente = document.getElementById("error-cliente");
+
+      const validEmail = "admin@puma.com";
+      const validPassword = "12345";
+
+      if (email === validEmail && password === validPassword) {
+        window.location.href = "dashboard.html";
+      } else {
+        errorCliente.style.display = "block";
+      }
+    });
+
+    // --- Empleado: mostrar/ocultar formulario ---
+    document.getElementById("btnToggleEmpleado").addEventListener("click", function(e){
+      e.preventDefault();
+      const form = document.getElementById("loginFormEmpleado");
+      form.style.display = "block";
+      form.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    // --- Empleado: validar y redirigir ---
+    document.getElementById("loginFormEmpleado").addEventListener("submit", function(e){
+      e.preventDefault();
+      const usuario = document.getElementById("usuarioEmpleado").value.trim();
+      const clave = document.getElementById("claveEmpleado").value.trim();
+      const msgError = document.getElementById("msg-empleado");
+      const msgOk = document.getElementById("ok-empleado");
+
+      // Demo: credenciales fijas
+      if (usuario === "empleado" && clave === "1234") {
+        msgError.style.display = "none";
+        msgOk.textContent = "Acceso concedido. Redirigiendo…";
+        msgOk.style.display = "block";
+        setTimeout(() => { window.location.href = "dashboard.html"; }, 1200);
+      } else {
+        msgOk.style.display = "none";
+        msgError.textContent = "Credenciales inválidas.";
+        msgError.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
